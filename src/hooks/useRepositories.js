@@ -8,8 +8,9 @@ const useRepositories = () => {
   })
 
 //   console.log(data)
+  const repositories = data?.repositories
 
-  return {data, loading, error}
+  return {repositories, loading, error}
 }
 
 export default useRepositories

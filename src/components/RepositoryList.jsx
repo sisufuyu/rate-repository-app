@@ -60,13 +60,13 @@ const styles = StyleSheet.create({
 const ItemSeperator = () => <View style={styles.spearator} />
 
 const RepositoryList = () => {
-  const { data, loading, error } = useRepositories()
+  const { repositories, loading, error } = useRepositories()
 
   if (loading) return <Text>Loading...</Text>
   if (error) return <Text>Error! ${error.message}</Text>
 
-  const repositoryNodes = data?.repositories
-    ? data.repositories.edges.map(edge => edge.node)
+  const repositoryNodes = repositories
+    ? repositories.edges.map(edge => edge.node)
     : []
 
     return (

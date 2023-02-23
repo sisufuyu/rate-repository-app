@@ -27,9 +27,7 @@ const styles = StyleSheet.create({
 })
 
 const AppBar = () => {
-  const { data } = useMe()
-
-  const me = data?.me
+  const { me } = useMe()
 
   const authStorage = useAuthStorage()
   const client = useApolloClient()

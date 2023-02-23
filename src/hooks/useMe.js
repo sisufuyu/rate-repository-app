@@ -5,7 +5,9 @@ import { ME } from '../graphql/queries'
 const useMe = () => {
   const { loading, error, data } = useQuery(ME)
 
-  return { loading, error, data }
+  const me = data?.me
+
+  return { loading, error, me }
 }
 
 export default useMe
