@@ -1,14 +1,6 @@
-import { FlatList, View, StyleSheet } from 'react-native'
-
-import Text from './Text'
-import RepositoryItem from './RepositoryItem'
-import useRepositories from '../hooks/useRepositories'
-
-const styles = StyleSheet.create({
-  spearator: {
-    height: 10,
-  },
-})
+import Text from '../Text'
+import useRepositories from '../../hooks/useRepositories'
+import RepositoryListContainer from './RepositoryListContainer'
 
 // const repositories = [
 //   {
@@ -57,25 +49,13 @@ const styles = StyleSheet.create({
 //   },
 // ]
 
-const ItemSeperator = () => <View style={styles.spearator} />
-
 const RepositoryList = () => {
   const { repositories, loading, error } = useRepositories()
 
   if (loading) return <Text>Loading...</Text>
   if (error) return <Text>Error! ${error.message}</Text>
 
-  const repositoryNodes = repositories
-    ? repositories.edges.map(edge => edge.node)
-    : []
-
-    return (
-        <FlatList 
-          data={repositoryNodes}
-          ItemSeparatorComponent={ItemSeperator}
-          renderItem={RepositoryItem}
-        />
-    )
+  return <RepositoryListContainer repositories={repositories}/>
 }
 
 export default RepositoryList

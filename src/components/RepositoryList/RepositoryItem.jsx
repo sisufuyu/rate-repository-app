@@ -1,7 +1,7 @@
 import { Pressable, View, Image, StyleSheet } from 'react-native'
 
-import Text from './Text'
-import theme from '../theme'
+import Text from '../Text'
+import theme from '../../theme'
 
 const styles = StyleSheet.create({
   container: {
@@ -74,7 +74,7 @@ const RepositoryItem = ({ item }) => {
   }
 
   return (
-    <View style={styles.container}>
+    <View testID="repositoryItem" style={styles.container}>
       <View style={infoStyles}>
         <Image source={{uri: item.ownerAvatarUrl}} style={styles.image} />
         <View style={styles.content}>
