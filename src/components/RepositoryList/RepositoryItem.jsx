@@ -73,6 +73,10 @@ const RepositoryItem = ({ item }) => {
     return num
   }
 
+  if(!item) {
+    return <></>
+  }
+
   return (
     <View testID="repositoryItem" style={styles.container}>
       <View style={infoStyles}>
