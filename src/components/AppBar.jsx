@@ -43,6 +43,9 @@ const AppBar = () => {
         <Link to="/" style={styles.tab}>
           <Text fontSize="subheading" fontWeight="bold" style={styles.text}>Repositories</Text>
         </Link>
+        <Link to ="/review" style={styles.tab}>
+          <Text fontSize="subheading" fontWeight="bold" style={styles.text}>Create a review</Text>
+        </Link>
         {me
           ? <Pressable onPress={signOut}>
               <Text fontSize="subheading" fontWeight="bold" style={styles.text}>Sign out</Text>
