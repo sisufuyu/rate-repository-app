@@ -16,15 +16,20 @@ const validationSchema = yup.object().shape({
     .string()
     .min(5, 'Password must have at least 5 characters')
     .max(50, 'Username must have less than 50 characters')
-    // .matches(/^(?=.*[0-9])(?=.*[A-Za-z]).{8,}$/, {message: 'Password must have at least 8 characters and conatin a letter and a number'})
-    .required('Password is required')
+    .required('Password is required'),
+  passwordConfirmation: yup
+    .string()
+    .oneOf([yup.ref('password')], 'Password must be the same')
+    .required('Password confirmation is required')
 })
 
-const SignInContainer = ({ onSubmit }) => {
+const SignUpContainer = ({ onSubmit }) => {
   const initialValues = {
     username: '',
     password: '',
+    passwordConfirmation: '',
   }
+
   return (
     <Formik 
       initialValues={initialValues}
@@ -33,15 +38,16 @@ const SignInContainer = ({ onSubmit }) => {
     >
       {({handleSubmit}) =>
         <View style={formStyles.container}>
-          <FormikTextInput name="username" placeholder="Username" />
-          <FormikTextInput name="password" placeholder="Password" secureTextEntry={true} />
-          <Pressable style={formStyles.button} onPress={handleSubmit}>
-            <Text fontWeight="bold" fontSize="subheading" style={formStyles.text}>Sign In</Text>
-          </Pressable>
+        <FormikTextInput name="username" placeholder="Username" />
+        <FormikTextInput name="password" placeholder="Password" secureTextEntry={true} />
+        <FormikTextInput name="passwordConfirmation" placeholder="Password confirmation" secureTextEntry={true} />
+        <Pressable style={formStyles.button} onPress={handleSubmit}>
+          <Text fontWeight="bold" fontSize="subheading" style={formStyles.text}>Sign Up</Text>
+        </Pressable>
         </View>
       }
     </Formik>
   )
 }
 
-export default SignInContainer
+export default SignUpContainer

@@ -43,16 +43,23 @@ const AppBar = () => {
         <Link to="/" style={styles.tab}>
           <Text fontSize="subheading" fontWeight="bold" style={styles.text}>Repositories</Text>
         </Link>
-        <Link to ="/review" style={styles.tab}>
-          <Text fontSize="subheading" fontWeight="bold" style={styles.text}>Create a review</Text>
-        </Link>
         {me
-          ? <Pressable onPress={signOut}>
+          ? <>
+            <Link to ="/review" style={styles.tab}>
+              <Text fontSize="subheading" fontWeight="bold" style={styles.text}>Create a review</Text>
+            </Link>
+            <Pressable onPress={signOut}>
               <Text fontSize="subheading" fontWeight="bold" style={styles.text}>Sign out</Text>
             </Pressable>
-          : <Link to="/signin" style={styles.tab}>
+            </>
+          : <>
+            <Link to="/signin" style={styles.tab}>
               <Text fontSize="subheading" fontWeight="bold" style={styles.text}>Sign in</Text>
             </Link>
+            <Link to="/signup" style={styles.tab}>
+              <Text fontSize="subheading" fontWeight="bold" style={styles.text}>Sign up</Text>
+            </Link>
+            </>
         }
       </ScrollView>
     </View>
