@@ -42,17 +42,15 @@ const dateTransfer = (time) => {
 }
 
 const ReviewItem = ({ review }) => {
-  if(!review) return <></>
-
   return (
     <View style={styles.container}>
       <View style={styles.rating}>
-        <Text color="primary" fontWeight="bold" fontSize="subheading">{review.rating}</Text>
+        <Text color="primary" fontWeight="bold" fontSize="subheading">{review?.rating || ''}</Text>
       </View>
       <View style={styles.infoContainer}>
-        <Text fontWeight="bold" fontSize="subheading" style={styles.text}>{review.user?.username}</Text>
-        <Text style={styles.text}>{dateTransfer(review.createdAt)}</Text>
-        <Text style={styles.text}>{review.text}</Text>
+        <Text fontWeight="bold" fontSize="subheading" style={styles.text}>{review?.user?.username || ''}</Text>
+        <Text style={styles.text}>{dateTransfer(review?.createdAt)}</Text>
+        <Text style={styles.text}>{review?.text || ''}</Text>
       </View>
     </View>
   )

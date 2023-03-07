@@ -1,4 +1,7 @@
+import { useEffect } from 'react'
+
 import Text from '../Text'
+import { useRepositoriesContext } from '../../hooks/useRepositoriesContext'
 import useRepositories from '../../hooks/useRepositories'
 import RepositoryListContainer from './RepositoryListContainer'
 
@@ -50,12 +53,15 @@ import RepositoryListContainer from './RepositoryListContainer'
 // ]
 
 const RepositoryList = () => {
-  const { repositories, loading, error } = useRepositories()
+  const { orderBy, orderDirection, keyword } = useRepositoriesContext()
+  const {repositories, loading, error} = useRepositories({  orderBy, orderDirection, keyword })
 
   if (loading) return <Text>Loading...</Text>
   if (error) return <Text>Error! ${error.message}</Text>
 
-  return <RepositoryListContainer repositories={repositories}/>
+  return (
+    <RepositoryListContainer repositories={repositories}/>
+  )
 }
 
 export default RepositoryList

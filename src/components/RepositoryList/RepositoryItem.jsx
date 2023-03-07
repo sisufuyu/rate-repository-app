@@ -73,37 +73,33 @@ const RepositoryItem = ({ item }) => {
     return num
   }
 
-  if(!item) {
-    return <></>
-  }
-
   return (
     <View testID="repositoryItem" style={styles.container}>
       <View style={infoStyles}>
-        <Image source={{uri: item.ownerAvatarUrl}} style={styles.image} />
+        <Image source={{uri: item?.ownerAvatarUrl}} style={styles.image} />
         <View style={styles.content}>
-          <Text fontWeight="bold" style={styles.marginVertical}>{item.fullName}</Text>
-          <Text color="textSecondary" style={styles.text}>{item.description}</Text>
+          <Text fontWeight="bold" style={styles.marginVertical}>{item?.fullName}</Text>
+          <Text color="textSecondary" style={styles.text}>{item?.description}</Text>
           <Pressable style={styles.button}>
-            <Text fontWeight="bold" style={{color: theme.colors.onBackground}}>{item.language}</Text>
+            <Text fontWeight="bold" style={{color: theme.colors.onBackground}}>{item?.language}</Text>
           </Pressable>
         </View>
       </View>
       <View style={styles.flextAround}>
         <View style={styles.flexColumn}>
-          <Text fontWeight="bold" style={styles.marginVertical}>{count(item.stargazersCount)}</Text>
+          <Text fontWeight="bold" style={styles.marginVertical}>{count(item?.stargazersCount)}</Text>
           <Text color="textSecondary">Stars</Text>
         </View>
         <View style={styles.flexColumn}>
-          <Text fontWeight="bold" style={styles.marginVertical}>{count(item.forksCount)}</Text>
+          <Text fontWeight="bold" style={styles.marginVertical}>{count(item?.forksCount)}</Text>
           <Text color="textSecondary">Forks</Text>
         </View>
         <View style={styles.flexColumn}>
-          <Text fontWeight="bold" style={styles.marginVertical}>{count(item.reviewCount)}</Text>
+          <Text fontWeight="bold" style={styles.marginVertical}>{count(item?.reviewCount)}</Text>
           <Text color="textSecondary">Reviews</Text>
         </View>
         <View style={styles.flexColumn}>
-          <Text fontWeight="bold" style={styles.marginVertical}>{count(item.ratingAverage)}</Text>
+          <Text fontWeight="bold" style={styles.marginVertical}>{count(item?.ratingAverage)}</Text>
           <Text color="textSecondary">Rating</Text>
         </View>
       </View>

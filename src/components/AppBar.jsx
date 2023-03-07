@@ -2,11 +2,13 @@ import { View, StyleSheet, ScrollView, Pressable } from 'react-native'
 import Constants from 'expo-constants'
 import { Link } from 'react-router-native'
 import { useApolloClient } from '@apollo/client'
+import { useNavigate } from 'react-router-native'
 
 import Text from './Text'
 import theme from '../theme'
 import useMe from '../hooks/useMe'
 import { useAuthStorage } from '../hooks/useAuthStorage'
+import { useRepositoriesContext } from '../hooks/useRepositoriesContext'
 
 const styles = StyleSheet.create({
   container: {
@@ -32,6 +34,16 @@ const AppBar = () => {
   const authStorage = useAuthStorage()
   const client = useApolloClient()
 
+  const { setOrderBy, setOrderDirection, setKeyword } = useRepositoriesContext()
+  const navigate = useNavigate()
+
+  const onPress = () => {
+    setOrderBy('CREATED_AT')
+    setOrderDirection('DESC')
+    setKeyword('')
+    navigate('/')
+  }
+
   const signOut = async () => {
     await authStorage.removeAccessToken()
     client.resetStore()
@@ -40,9 +52,9 @@ const AppBar = () => {
   return (
     <View style={styles.container}>
       <ScrollView horizontal>
-        <Link to="/" style={styles.tab}>
+        <Pressable style={styles.tab} onPress={onPress}>
           <Text fontSize="subheading" fontWeight="bold" style={styles.text}>Repositories</Text>
-        </Link>
+        </Pressable>
         {me
           ? <>
             <Link to ="/review" style={styles.tab}>
