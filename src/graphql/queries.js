@@ -42,10 +42,24 @@ ${REPOSITORY_INFO}
 `
 
 export const ME = gql`
-  query ME{
+  query Me ($includeReviews: Boolean = false){
     me {
       id
       username
+      reviews @include(if: $includeReviews) {
+        edges {
+          node {
+            id
+            createdAt
+            rating
+            text
+            repository {
+              fullName
+            }
+            repositoryId
+          }
+        }
+      }
     }
   }
 `

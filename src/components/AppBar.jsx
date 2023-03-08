@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-native'
 
 import Text from './Text'
 import theme from '../theme'
-import useMe from '../hooks/useMe'
+
 import { useAuthStorage } from '../hooks/useAuthStorage'
 import { useRepositoriesContext } from '../hooks/useRepositoriesContext'
 
@@ -28,9 +28,7 @@ const styles = StyleSheet.create({
   }
 })
 
-const AppBar = () => {
-  const { me } = useMe()
-
+const AppBar = ({ id }) => {
   const authStorage = useAuthStorage()
   const client = useApolloClient()
 
@@ -55,10 +53,13 @@ const AppBar = () => {
         <Pressable style={styles.tab} onPress={onPress}>
           <Text fontSize="subheading" fontWeight="bold" style={styles.text}>Repositories</Text>
         </Pressable>
-        {me
+        {id
           ? <>
-            <Link to ="/review" style={styles.tab}>
+            <Link to ="/create-review" style={styles.tab}>
               <Text fontSize="subheading" fontWeight="bold" style={styles.text}>Create a review</Text>
+            </Link>
+            <Link to ="/reviews" style={styles.tab}>
+              <Text fontSize="subheading" fontWeight="bold" style={styles.text}>My reviews</Text>
             </Link>
             <Pressable onPress={signOut}>
               <Text fontSize="subheading" fontWeight="bold" style={styles.text}>Sign out</Text>

@@ -8,6 +8,7 @@ const useRepository = (id) => {
     {
       variables: { id },
       fetchPolicy: 'cache-and-network',
+      // onCompleted: data => console.log(data),
     },
   )
 

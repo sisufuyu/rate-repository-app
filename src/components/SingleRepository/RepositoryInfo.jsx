@@ -1,7 +1,7 @@
 import { View, Pressable, StyleSheet } from 'react-native'
 import * as Linking from 'expo-linking'
 
-import RepositoryItem from './RepositoryItem'
+import RepositoryItem from '../RepositoryItem'
 import Text from '../Text'
 import theme from '../../theme'
 

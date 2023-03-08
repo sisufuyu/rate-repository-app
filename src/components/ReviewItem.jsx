@@ -1,17 +1,14 @@
 import { View, StyleSheet } from 'react-native'
 
-import Text from '../Text'
-import theme from '../../theme'
+import Text from './Text'
+import theme from '../theme'
+import { formStyles } from '../styles'
 
 const styles = StyleSheet.create({
   container: {
-    display: 'flex',
+    ...formStyles.container,
     flexDirection: 'row',
-    justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    backgroundColor: 'white',
-    paddingVertical: 10,
-    paddingHorizontal: 20
   },
   rating: {
     borderColor: theme.colors.primary,
@@ -42,13 +39,14 @@ const dateTransfer = (time) => {
 }
 
 const ReviewItem = ({ review }) => {
+
   return (
     <View style={styles.container}>
       <View style={styles.rating}>
         <Text color="primary" fontWeight="bold" fontSize="subheading">{review?.rating || ''}</Text>
       </View>
       <View style={styles.infoContainer}>
-        <Text fontWeight="bold" fontSize="subheading" style={styles.text}>{review?.user?.username || ''}</Text>
+        <Text fontWeight="bold" fontSize="subheading" style={styles.text}>{review?.user?.username || review?.repository?.fullName || ''}</Text>
         <Text style={styles.text}>{dateTransfer(review?.createdAt)}</Text>
         <Text style={styles.text}>{review?.text || ''}</Text>
       </View>

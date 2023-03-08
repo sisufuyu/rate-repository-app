@@ -1,7 +1,7 @@
 import { FlatList } from 'react-native'
 
 import RepositoryWrapper from './RepositoryWrapper'
-import ItemSeperator from './ItemSeperator'
+import ItemSeperator from '../ItemSeperator'
 import SortMenu from './SortMenu'
 import Searchbar from './SearchBar'
 

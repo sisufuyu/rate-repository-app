@@ -1,6 +1,6 @@
 import { Link } from 'react-router-native'
 
-import RepositoryItem from './RepositoryItem'
+import RepositoryItem from '../RepositoryItem'
 
 const RepositoryWrapper = ({ item }) => {
   const id = item?.id

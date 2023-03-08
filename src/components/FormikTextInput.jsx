@@ -1,4 +1,3 @@
-import { StyleSheet } from 'react-native-web'
 import { useField } from 'formik'
 
 import TextInput from './TextInput'

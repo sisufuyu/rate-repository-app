@@ -13,7 +13,6 @@ const useCreateReview = () => {
     await mutate({
       variables: { review: { ownerName, rating, repositoryName, text }},
       onCompleted: (data) => {
-        console.log(data)
         const repositoryId = data?.createReview?.repositoryId
         navigate(`/repository/${repositoryId}`)
       },
