@@ -32,13 +32,13 @@ const AppBar = ({ id }) => {
   const authStorage = useAuthStorage()
   const client = useApolloClient()
 
-  const { setOrderBy, setOrderDirection, setKeyword } = useRepositoriesContext()
+  const { setOrderBy, setOrderDirection, setSearchKeyword } = useRepositoriesContext()
   const navigate = useNavigate()
 
   const onPress = () => {
     setOrderBy('CREATED_AT')
     setOrderDirection('DESC')
-    setKeyword('')
+    setSearchKeyword('')
     navigate('/')
   }
 

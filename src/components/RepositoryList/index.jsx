@@ -53,14 +53,14 @@ import RepositoryListContainer from './RepositoryListContainer'
 // ]
 
 const RepositoryList = () => {
-  const { orderBy, orderDirection, keyword } = useRepositoriesContext()
-  const {repositories, loading, error} = useRepositories({  orderBy, orderDirection, keyword })
+  const { orderBy, orderDirection, searchKeyword } = useRepositoriesContext()
+  const {repositories, loading, error, fetchMore } = useRepositories({  first: 5, after: '', orderBy, orderDirection, searchKeyword })
 
   if (loading) return <Text>Loading...</Text>
   if (error) return <Text>Error! ${error.message}</Text>
 
   return (
-    <RepositoryListContainer repositories={repositories}/>
+    <RepositoryListContainer repositories={repositories} fetchMore={fetchMore} />
   )
 }
 

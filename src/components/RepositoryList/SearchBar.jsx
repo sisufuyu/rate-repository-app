@@ -20,11 +20,11 @@ const styles = StyleSheet.create({
 
 const Searchbar = () => {
   const [searchQuery, setSearchQuery] = useState('')
-  const { setKeyword } = useRepositoriesContext()
+  const { setSearchKeyword } = useRepositoriesContext()
 
   const onChangeSearch = query => setSearchQuery(query)
 
-  const onSubmitEditing = () => setKeyword(searchQuery)
+  const onSubmitEditing = () => setSearchKeyword(searchQuery)
   
   return (
     <NativeSearchBar

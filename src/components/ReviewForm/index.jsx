@@ -1,7 +1,7 @@
 import ReviewFormContainer from './ReviewFormContainer'
 import useCreateReview from '../../hooks/useCreateReview'
 
-const ReviewForm = () => {
+const ReviewForm = ({ refetch }) => {
   const [createReview, { error }] = useCreateReview()
 
   const onSubmit = async (values) => {
@@ -9,6 +9,7 @@ const ReviewForm = () => {
       ...values, 
       rating: Number(values.rating),
     })
+    refetch()
   }
 
   return (

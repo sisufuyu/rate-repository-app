@@ -5,10 +5,15 @@ import ItemSeperator from '../ItemSeperator'
 import SortMenu from './SortMenu'
 import Searchbar from './SearchBar'
 
-const RepositoryListContainer = ({ repositories }) => {
+const RepositoryListContainer = ({ repositories, fetchMore }) => {
   const repositoryNodes = repositories
     ? repositories.edges.map(edge => edge.node)
     : []
+  
+  const onEndReached = () => {
+    fetchMore()
+    //console.log('You have reached the end of the list')
+  }
 
   return (
     <FlatList 
@@ -16,6 +21,7 @@ const RepositoryListContainer = ({ repositories }) => {
       ItemSeparatorComponent={ItemSeperator}
       ListHeaderComponent={<><Searchbar /><SortMenu /></>}
       renderItem={RepositoryWrapper}
+      onEndReached={onEndReached}
     />
   )
 }

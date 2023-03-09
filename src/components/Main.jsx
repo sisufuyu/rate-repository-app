@@ -35,7 +35,7 @@ const Main = () => {
           <Route path="/" element={<RepositoryList />} exact />
           <Route path="/signin" element={<SignIn />} exact />
           <Route path="/repository/:repositoryId" element={<SingleRepository />} exact />
-          <Route path="/create-review" element={<ReviewForm />} exact />
+          <Route path="/create-review" element={<ReviewForm refetch={refetch} />} exact />
           <Route path="/reviews" element={<ReviewList reviews={reviews} refetch={refetch} />} exact />
           <Route path="/signup" element={<SignUp />} exact />
           <Route path="*" element={<Navigate to="/" replace />} />

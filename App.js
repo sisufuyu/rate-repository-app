@@ -16,14 +16,14 @@ const client = createApolloClient(authStorage)
 const App = () => {
   const [orderBy, setOrderBy] = useState('CREATED_AT')
   const [orderDirection, setOrderDirection] = useState('DESC')
-  const [keyword, setKeyword] = useState('')
+  const [searchKeyword, setSearchKeyword] = useState('')
 
   return (
     <>
       <NativeRouter>
         <ApolloProvider client={client}>
           <AuthStorageContext.Provider value={authStorage}>
-            <RepositoriesContext.Provider value={{orderBy, setOrderBy, orderDirection, setOrderDirection, keyword, setKeyword }}>
+            <RepositoriesContext.Provider value={{orderBy, setOrderBy, orderDirection, setOrderDirection, searchKeyword, setSearchKeyword }}>
             <PaperProvider>
               <Main />
             </PaperProvider>

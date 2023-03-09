@@ -9,11 +9,16 @@ import ItemSeperator from '../ItemSeperator'
 const SingleRepository = () => {
   let { repositoryId } = useParams()
 
-  const { repository } = useRepository(repositoryId)
+  const { repository, fetchMore } = useRepository({ id: repositoryId, first: 5, after: '' })
 
   const reviews = repository?.reviews
     ? repository.reviews.edges.map(edge => edge.node)
     : []
+
+  const onEndReached = () => {
+    fetchMore()
+    // console.log('You have reached the end of the list')
+  }
 
   return (
     <FlatList
@@ -22,6 +27,7 @@ const SingleRepository = () => {
       ItemSeparatorComponent={ItemSeperator}
       keyExtractor={({ id }) => id}
       ListHeaderComponent={() => <RepositoryInfo repository={repository} />}
+      onEndReached={onEndReached}
     />
   )
 }
